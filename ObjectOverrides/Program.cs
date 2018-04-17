@@ -11,19 +11,24 @@ namespace ObjectOverrides
         static void Main(string[] args)
         {
             Console.WriteLine("*****  Fun  with  System.Object  *****\n");
-            Person p1 = new Person();
-            //  Использовать  унаследованные  члены  System.Object.
-            Console.WriteLine("ToString:  {0}", p1.ToString());
-            Console.WriteLine("Hashcode:  {0}", p1.GetHashCode());
-            Console.WriteLine("Type:  {0}", p1.GetType());
-            //  Создать  другую  ссьшку  на  pl.
-            Person p2 = p1;
-            object о = p2;
-            //  Указывают  ли  ссылки  на  один  и  тот  же  объект  в  памяти?
-            if (о.Equals(p1) && p2.Equals(о))
-            {
-                Console.WriteLine("Same  instance!");  //  Один  и  тот  же  экземпляр
-            }
+            //  ПРИМЕЧАНИЕ:  эти  объекты  идентичны  для  проверки
+            //  методов  Equals()  и  GetHashCode().
+            Person pl = new Person("Homer", "Simpson", 50);
+            Person p2 = new Person("Homer", "Simpson", 50);
+            //  Получить  строковые  версии  объектов.
+            Console.WriteLine("pl.ToString()  = {0}", pl.ToString());
+            Console.WriteLine("p2.ToString()  = {0}", p2.ToString());
+            //  Проверить  переопределенный  метод  Equals().
+            Console.WriteLine("pl  =p2?:  {0}", pl.Equals(p2));
+            //  Проверить  хеш-коды.
+            Console.WriteLine("Samehashcodes?:  {0}", pl.GetHashCode() == p2.GetHashCode());
+            Console.WriteLine();
+            //  Изменить  возраст  p2  и  проверить  снова.
+            p2.Age = 45;
+            Console.WriteLine("pl.ToString()  = {0}", pl.ToString());
+            Console.WriteLine("p2.ToString()  = {0}", p2.ToString());
+            Console.WriteLine("pl  =p2?:  {0}", pl.Equals(p2));
+            Console.WriteLine("Samehashcodes?:  {0}", pl.GetHashCode() == p2.GetHashCode());
             Console.ReadLine();
         }
     }
