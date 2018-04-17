@@ -22,8 +22,29 @@ namespace EmployeeApp
             fran.GiveBonus(200);
             fran.DisplayStats();
             Console.ReadLine();
+            
 
         }
 
+        static void CastingExamples()
+        {
+            //  Manager  "является"  System.Object,  поэтому  можно  сохранять
+            //  ссьшку  на  Manager  в  переменной  типа  object.
+            object frank = new Manager("Frank  Zappa", 9, 3000, 40000, "111-11-1111", 5);
+            GivePromotion((Manager)frank);
+            //  Manager  также  "является"  Employee.
+            Employee moonUnit = new Manager("MoonUnit  Zappa", 2, 3001, 20000, "101-11-1321", 1);
+            GivePromotion(moonUnit);
+            //  PTSalesPerson  "является"  SalesPerson.
+            SalesPerson jill = new PTSalesPerson("Jill", 834, 3002, 100000, "111-12-1119", 90);
+            GivePromotion(jill);
+        }
+
+        static void GivePromotion(Employee emp)
+        {
+            //  Повысить  зарплату...
+            //  Предоставить  место  на  парковке  компании...
+            Console.WriteLine("{0}  was  promoted!", emp.Name);
+        }
     }
 }
