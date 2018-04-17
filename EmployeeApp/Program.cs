@@ -42,9 +42,19 @@ namespace EmployeeApp
 
         static void GivePromotion(Employee emp)
         {
-            //  Повысить  зарплату...
-            //  Предоставить  место  на  парковке  компании...
             Console.WriteLine("{0}  was  promoted!", emp.Name);
+            if (emp is SalesPerson)
+            {
+                Console.WriteLine("{0}  made  {1}  sale(s)!", emp.Name,
+                ((SalesPerson)emp).SalesNumber);
+                Console.WriteLine();
+            }
+            if (emp is Manager)
+            {
+                Console.WriteLine("{0}  had  {1}  stockoptions...", emp.Name,
+                ((Manager)emp).StockOptions);
+                Console.WriteLine();
+            }
         }
     }
 }
